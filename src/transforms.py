@@ -57,7 +57,7 @@ class RandomErasing:
     """
 
     def __init__(
-        self, probability=0.5, sl=0.02, sh=0.4, r1=0.3, mean=[107.3576, 107.2636, 108.6913]
+        self, probability=0.5, sl=0.02, sh=0.4, r1=0.3, mean=[0.4914, 0.4822, 0.4465]
     ):
         self.probability = probability
         self.mean = mean
@@ -133,8 +133,8 @@ def build_transforms(
 ):
     # use imagenet mean and std as default
     # TODO: compute dataset-specific mean and std
-    imagenet_mean = [107.3576, 107.2636, 108.6913]
-    imagenet_std = [48.4398, 48.1111, 47.9169]
+    imagenet_mean = [0.4914, 0.4822, 0.4465]
+    imagenet_std = [0.229, 0.224, 0.225]
     normalize = T.Normalize(mean=imagenet_mean, std=imagenet_std)
 
     # build train transformations
