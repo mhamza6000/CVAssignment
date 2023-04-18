@@ -121,14 +121,24 @@ class ColorAugmentation:
         quatity = torch.mm(self.eig_val * alpha, self.eig_vec)
         tensor = tensor + quatity.view(3, 1, 1)
         return tensor
-
+    
+class RandomPerspective:
+    def __init__(self, distortion_scale = 0.6, p=1.0)
+        self.distortion_scale = distortion_scale
+        self.p = p
+        self.perspective_imgs = []
+        
+    def __call__(self) 
+        perspective_transformer = T.RandomPerspective(distortion_scale=distortion_scale, p=p)
+        perspective_imgs = [perspective_transformer(orig_img) for _ in range(4)]
+        return perspective_imgs
 
 def build_transforms(
     height,
     width,
-    random_erase=False,  # use random erasing for data augmentation
-    color_jitter=False,  # randomly change the brightness, contrast and saturation
-    color_aug=False,  # randomly alter the intensities of RGB channels
+    random_erase=True,  # use random erasing for data augmentation
+    color_jitter=True,  # randomly change the brightness, contrast and saturation
+    color_aug=True,  # randomly alter the intensities of RGB channels
     **kwargs
 ):
     # use imagenet mean and std as default
@@ -141,6 +151,8 @@ def build_transforms(
     transform_train = []
     transform_train += [Random2DTranslation(height, width)]
     transform_train += [T.RandomHorizontalFlip()]
+    if rand_pers:
+        transform_train += [RandomPerspective()]
     if color_jitter:
         transform_train += [
             T.ColorJitter(brightness=0.2, contrast=0.15, saturation=0, hue=0)
