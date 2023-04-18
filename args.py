@@ -283,6 +283,7 @@ def dataset_kwargs(parsed_args):
         "random_erase": parsed_args.random_erase,
         "color_jitter": parsed_args.color_jitter,
         "color_aug": parsed_args.color_aug,
+        "rand_pers":parsed_args.rand_pers
     }
 
 
