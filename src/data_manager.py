@@ -113,7 +113,7 @@ class ImageDataManager(BaseDataManager):
             ImageDataset(train, transform=self.transform_train),
             sampler=self.train_sampler,
             batch_size=self.train_batch_size,
-            shuffle=True,
+            shuffle=False,
             num_workers=self.workers,
             pin_memory=self.use_gpu,
             drop_last=True,
