@@ -24,6 +24,7 @@ class BaseDataManager:
         random_erase=True,  # use random erasing for data augmentation
         color_jitter=True,  # randomly change the brightness, contrast and saturation
         color_aug=True,  # randomly alter the intensities of RGB channels
+        rand_pers=True,
         num_instances=4,  # number of instances per identity (for RandomIdentitySampler)
         **kwargs,
     ):
