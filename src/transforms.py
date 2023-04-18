@@ -128,9 +128,9 @@ class RandomPerspective:
         self.p = p
         self.perspective_imgs = []
         
-    def __call__(self):
+    def __call__(self,img):
         perspective_transformer = T.RandomPerspective(distortion_scale=distortion_scale, p=p)
-        perspective_imgs = [perspective_transformer(orig_img) for _ in range(4)]
+        perspective_imgs = [perspective_transformer(img) for _ in range(4)]
         return perspective_imgs
 
 def build_transforms(
