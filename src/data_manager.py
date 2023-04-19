@@ -52,7 +52,7 @@ class BaseDataManager:
             random_erase=self.random_erase,
             color_jitter=self.color_jitter,
             color_aug=self.color_aug,
-            rand_pers=self.rand_pers
+            rand_pers=self.rand_pers,
             rand_affine=self.rand_affine
         )
         self.transform_train = transform_train
