@@ -176,7 +176,7 @@ def build_transforms(
     rand_pers=True,
     rand_affine=True,
     gauss_blur=True,
-    rand_eq=True
+    rand_eq=True,
     **kwargs
 ):
     # use imagenet mean and std as default
