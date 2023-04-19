@@ -159,7 +159,7 @@ class GaussianBlur:
         
 class RandomEqualizer:
     def __init__(self):
-        self.__call__(img)
+        self.__call__()
         
     def __call__(self, img):
         equalizer = T.RandomEqualize()
