@@ -155,14 +155,6 @@ class GaussianBlur:
         blurrer = T.GaussianBlur()
         blurred_imgs = [blurrer(img) for _ in range(4)]
         return blurred_imgs
-
-        
-class RandomEqualizer:
-    def __init__(self):
-        equalizer = T.RandomEqualize()
-        equalized_imgs = [equalizer(img) for _ in range(4)]
-        return equalized_img
-        
     
     
 def build_transforms(
@@ -174,7 +166,6 @@ def build_transforms(
     rand_pers=True,
     rand_affine=True,
     gauss_blur=True,
-    rand_eq=True,
     **kwargs
 ):
     # use imagenet mean and std as default
@@ -191,8 +182,6 @@ def build_transforms(
         transform_train += [RandomPerspective()]
     if rand_affine:
         transform_train += [RandomAffine()]
-    if rand_eq:
-        transform_train += [RandomEqualizer()]
     if gauss_blur:
         transform_train += [GaussianBlur()]
     if color_jitter:
