@@ -194,7 +194,7 @@ def build_transforms(
     if rand_affine:
         transform_train += [RandomAffine()]
     if rand_eq:
-        transform_train += [RandomEqualizer()]
+        transform_train += [RandomEqualizer(img)]
     if gauss_blur:
         transform_train += [GaussianBlur()]
     if color_jitter:
