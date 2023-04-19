@@ -68,7 +68,26 @@ def argument_parser():
         action="store_true",
         help="randomly alter the intensities of RGB channels",
     )
-   
+    parser.add_argument(
+        "--rand-pers",
+        action="store_true",
+        help="randomly alter the intensities of RGB channels",
+    )
+    parser.add_argument(
+        "--gauss-blur",
+        action="store_true",
+        help="randomly alter the intensities of RGB channels",
+    )
+    parser.add_argument(
+        "--rand-affine",
+        action="store_true",
+        help="randomly alter the intensities of RGB channels",
+    )
+    parser.add_argument(
+        "--rand-eq",
+        action="store_true",
+        help="randomly alter the intensities of RGB channels",
+    )
     # ************************************************************
     # Optimization options
     # ************************************************************
