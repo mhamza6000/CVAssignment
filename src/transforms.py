@@ -146,11 +146,11 @@ class GaussianBlur:
 def build_transforms(
     height,
     width,
-    random_erase=True,  # use random erasing for data augmentation
-    color_jitter=True,  # randomly change the brightness, contrast and saturation
-    color_aug=True,  # randomly alter the intensities of RGB channels
-    rand_pers=True,
-    rand_affine=True,
+    random_erase=False,  # use random erasing for data augmentation
+    color_jitter=False,  # randomly change the brightness, contrast and saturation
+    color_aug=False,  # randomly alter the intensities of RGB channels
+    rand_pers=False,
+    rand_affine=False,
     #gauss_blur=True,
     **kwargs
 ):
