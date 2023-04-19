@@ -135,13 +135,13 @@ class RandomAffine:
         affine_imgs = affine_transfomer(img) 
         return affine_imgs
 
-    
+"""    
 class GaussianBlur:
     def __call__(self, img, kernel_size=(0.1, 5),sigma=(0.1, 5)):
         blurrer = T.GaussianBlur(kernel_size,sigma)
         blurred_imgs = blurrer(img)
         return blurred_imgs
-    
+"""  
     
 def build_transforms(
     height,
@@ -151,7 +151,7 @@ def build_transforms(
     color_aug=True,  # randomly alter the intensities of RGB channels
     rand_pers=True,
     rand_affine=True,
-    gauss_blur=True,
+    #gauss_blur=True,
     **kwargs
 ):
     # use imagenet mean and std as default
@@ -168,8 +168,8 @@ def build_transforms(
         transform_train += [RandomPerspective()]
     if rand_affine:
         transform_train += [RandomAffine()]
-    if gauss_blur:
-        transform_train += [GaussianBlur()]
+    #if gauss_blur:
+      #  transform_train += [GaussianBlur()]
     if color_jitter:
         transform_train += [
             T.ColorJitter(brightness=0.2, contrast=0.15, saturation=0, hue=0)
