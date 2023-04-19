@@ -158,7 +158,7 @@ class GaussianBlur:
 
         
 class RandomEqualizer:
-    def __init__(self,img=img):
+    def __init__(self,img):
         self.__call__(img)
         
     def __call__(self, img):
