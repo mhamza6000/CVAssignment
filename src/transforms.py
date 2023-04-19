@@ -175,7 +175,7 @@ def build_transforms(
     color_aug=True,  # randomly alter the intensities of RGB channels
     rand_pers=True,
     rand_affine=True,
-    gauss_blr=True,
+    gauss_blur=True,
     rand_eq=True
     **kwargs
 ):
@@ -195,7 +195,7 @@ def build_transforms(
         transform_train += [RandomAffine()]
     if rand_eq:
         transform_train += [RandomEqualizer()]
-    if gauss-blur:
+    if gauss_blur:
         transform_train += [GaussianBlur()]
     if color_jitter:
         transform_train += [
