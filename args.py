@@ -82,7 +82,7 @@ def argument_parser():
         "--lr", default=0.00001, type=float, help="initial learning rate"
     )
     parser.add_argument(
-        "--weight-decay", default=5e-03, type=float, help="weight decay"
+        "--weight-decay", default=5e-04, type=float, help="weight decay"
     )
     # sgd
     parser.add_argument(
@@ -106,13 +106,13 @@ def argument_parser():
     # adam/amsgrad
     parser.add_argument(
         "--adam-beta1",
-        default=0.7,
+        default=0.92,
         type=float,
         help="exponential decay rate for adam's first moment",
     )
     parser.add_argument(
         "--adam-beta2",
-        default=0.9,
+        default=0.999,
         type=float,
         help="exponential decay rate for adam's second moment",
     )
