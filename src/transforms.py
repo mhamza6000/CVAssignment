@@ -130,24 +130,15 @@ class RandomPerspective:
 
     
 class RandomAffine:
-    def __init__(self,degrees=(30, 70), translate=(0.1, 0.3), scale=(0.5, 0.75)):
-        self.degrees=degrees
-        self.translate=translate
-        self.scale=scale
-        
-    def __call__(self, img, degrees, translate, scale):
-        affine_transfomer = T.RandomAffine(degrees=(30, 70), translate=(0.1, 0.3), scale=(0.5, 0.75))
+    def __call__(self, img, degrees=(30, 70), translate=(0.1, 0.3), scale=(0.5, 0.75)):
+        affine_transfomer = T.RandomAffine(degrees, translate, scale)
         affine_imgs = [affine_transfomer(img) for _ in range(4)]
         return affine_imgs
 
     
 class GaussianBlur:
-    def __init__(self,kernel_size=(5, 9), sigma=(0.1, 5)):
-        self.kernel_size=kernel_size
-        self.sigma=sigma
-        
-    def __call__(self, img, kernel_size,sigma):
-        blurrer = T.GaussianBlur()
+    def __call__(self, img, kernel_size=(0.1, 5),sigma=(0.1, 5)):
+        blurrer = T.GaussianBlur(kernel_size,sigma)
         blurred_imgs = [blurrer(img) for _ in range(4)]
         return blurred_imgs
     
