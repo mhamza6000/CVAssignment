@@ -83,11 +83,6 @@ def argument_parser():
         action="store_true",
         help="randomly alter the intensities of RGB channels",
     )
-    parser.add_argument(
-        "--rand-eq",
-        action="store_true",
-        help="randomly alter the intensities of RGB channels",
-    )
     # ************************************************************
     # Optimization options
     # ************************************************************
