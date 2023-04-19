@@ -123,10 +123,12 @@ class ColorAugmentation:
         return tensor  
     
 class RandomPerspective:
-   ''' def __init__(self, distortion_scale = 0.6, p=1.0):
+   """ 
+   def __init__(self, distortion_scale = 0.6, p=1.0):
         self.distortion_scale = distortion_scale
         self.p = p
-        self.perspective_imgs = []'''
+        self.perspective_imgs = []
+   """   
     def __call__(self,img,distortion_scale = 0.6, p=1.0):
         perspective_transformer = T.RandomPerspective(distortion_scale, p)
         perspective_imgs = [perspective_transformer(img) for _ in range(4)]
