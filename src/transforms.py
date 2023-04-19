@@ -158,10 +158,10 @@ class GaussianBlur:
 
         
 class RandomEqualizer:
-    def __init__(self,img):
-        self.__call__(img)
+    def __init__(self):
+        self.__call__()
         
-    def __call__(self, img):
+    def __call__(self):
         equalizer = T.RandomEqualize()
         equalized_imgs = [equalizer(img) for _ in range(4)]
         return equalized_imgs
@@ -194,7 +194,7 @@ def build_transforms(
     if rand_affine:
         transform_train += [RandomAffine()]
     if rand_eq:
-        transform_train += [RandomEqualizer(img)]
+        transform_train += [RandomEqualizer()]
     if gauss_blur:
         transform_train += [GaussianBlur()]
     if color_jitter:
