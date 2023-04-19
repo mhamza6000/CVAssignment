@@ -154,17 +154,15 @@ class GaussianBlur:
     def __call__(self, img):
         blurrer = T.GaussianBlur()
         blurred_imgs = [blurrer(img) for _ in range(4)]
-        plot(blurred_imgs)
+        return blurred_imgs
 
         
 class RandomEqualizer:
     def __init__(self):
-        self.__call__()
-        
-    def __call__(self):
         equalizer = T.RandomEqualize()
         equalized_imgs = [equalizer(img) for _ in range(4)]
-        return equalized_imgs
+        return equalized_img
+        
     
     
 def build_transforms(
