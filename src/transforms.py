@@ -120,8 +120,8 @@ class ColorAugmentation:
         alpha = torch.normal(mean=torch.zeros_like(self.eig_val)) * 0.1
         quatity = torch.mm(self.eig_val * alpha, self.eig_vec)
         tensor = tensor + quatity.view(3, 1, 1)
-        return tensor
-'''  
+        return tensor  
+    
 class RandomPerspective:
     def __init__(self, distortion_scale = 0.6, p=1.0):
         self.distortion_scale = distortion_scale
@@ -131,15 +131,52 @@ class RandomPerspective:
     def __call__(self,img):
         perspective_transformer = T.RandomPerspective(distortion_scale=distortion_scale, p=p)
         perspective_imgs = [perspective_transformer(img) for _ in range(4)]
-        return perspective_imgs '''
+        return perspective_imgs 
 
+    
+class RandomAffine:
+    def __init__(self,degrees=(30, 70), translate=(0.1, 0.3), scale=(0.5, 0.75)):
+        self.degrees=degrees
+        self.translate=translate
+        self.scale=scale
+        
+    def __call__(self, img):
+        affine_transfomer = T.RandomAffine(degrees=(30, 70), translate=(0.1, 0.3), scale=(0.5, 0.75))
+        affine_imgs = [affine_transfomer(img) for _ in range(4)]
+        return affine_imgs
+
+    
+class GaussianBlur:
+    def __init__(self,kernel_size=(5, 9), sigma=(0.1, 5)):
+        self.kernel_size=kernel_size
+        self.sigma=sigma
+        
+    def __call__(self, img):
+        blurrer = T.GaussianBlur()
+        blurred_imgs = [blurrer(img) for _ in range(4)]
+        plot(blurred_imgs)
+
+        
+class RandomEqualizer:
+    def __init__(self):
+        self.__call__(img)
+        
+    def __call__(self, img):
+        equalizer = T.RandomEqualize()
+        equalized_imgs = [equalizer(img) for _ in range(4)]
+        return equalized_imgs
+    
+    
 def build_transforms(
     height,
     width,
     random_erase=True,  # use random erasing for data augmentation
     color_jitter=True,  # randomly change the brightness, contrast and saturation
     color_aug=True,  # randomly alter the intensities of RGB channels
-    #rand_pers=True,
+    rand_pers=True,
+    rand_affine=True,
+    gauss_blr=True,
+    rand_eq=True
     **kwargs
 ):
     # use imagenet mean and std as default
@@ -152,8 +189,14 @@ def build_transforms(
     transform_train = []
     transform_train += [Random2DTranslation(height, width)]
     transform_train += [T.RandomHorizontalFlip()]
-    '''if rand_pers:
-        transform_train += [RandomPerspective()]'''
+    if rand_pers:
+        transform_train += [RandomPerspective()]
+    if rand_affine:
+        transform_train += [RandomAffine()]
+    if rand_eq:
+        transform_train += [RandomEqualizer()]
+    if gauss-blur:
+        transform_train += [GaussianBlur()]
     if color_jitter:
         transform_train += [
             T.ColorJitter(brightness=0.2, contrast=0.15, saturation=0, hue=0)
