@@ -125,21 +125,21 @@ class ColorAugmentation:
 class RandomPerspective:  
     def __call__(self,img,distortion_scale = 0.6, p=1.0):
         perspective_transformer = T.RandomPerspective(distortion_scale, p)
-        perspective_imgs = [perspective_transformer(img) for _ in range(4)]
+        perspective_imgs = perspective_transformer(img)
         return perspective_imgs 
 
     
 class RandomAffine:
     def __call__(self, img, degrees=(30, 70), translate=(0.1, 0.3), scale=(0.5, 0.75)):
         affine_transfomer = T.RandomAffine(degrees, translate, scale)
-        affine_imgs = [affine_transfomer(img) for _ in range(4)]
+        affine_imgs = affine_transfomer(img) 
         return affine_imgs
 
     
 class GaussianBlur:
     def __call__(self, img, kernel_size=(0.1, 5),sigma=(0.1, 5)):
         blurrer = T.GaussianBlur(kernel_size,sigma)
-        blurred_imgs = [blurrer(img) for _ in range(4)]
+        blurred_imgs = blurrer(img)
         return blurred_imgs
     
     
