@@ -58,7 +58,7 @@ class BaseDataManager:
             color_aug=self.color_aug,
             rand_pers=self.rand_pers,
             rand_affine=self.rand_affine,
-            guass_blur=self.guass_blur
+            guass_blur=self.guass_blur,
             rand_atcont=self.rand_atcont
         )
         self.transform_train = transform_train
