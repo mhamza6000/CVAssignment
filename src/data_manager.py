@@ -45,6 +45,7 @@ class BaseDataManager:
         self.color_aug = color_aug
         self.rand_pers = rand_pers
         self.rand_affine = rand_affine
+        self.guass_blur = guass_blur
         self.num_instances = num_instances
 
         transform_train, transform_test = build_transforms(
