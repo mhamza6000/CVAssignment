@@ -140,7 +140,12 @@ class GaussianBlur:
         blurrer = T.GaussianBlur(kernel_size,sigma)
         blurred_imgs = blurrer(img)
         return blurred_imgs
-
+    
+class RandomAutoContrast:
+    def __call__(self, img):
+        autocontraster = T.RandomAutocontrast()
+        autocontrasted_imgs = autocontraster(img)
+        return autocontrasted_imgs
     
 def build_transforms(
     height,
@@ -151,6 +156,7 @@ def build_transforms(
     rand_pers=False,
     rand_affine=False,
     gauss_blur=False,
+    rand_atcont=False,
     **kwargs
 ):
     # use imagenet mean and std as default
@@ -169,6 +175,8 @@ def build_transforms(
         transform_train += [RandomAffine()]
     if gauss_blur:
         transform_train += [GaussianBlur()]
+    if rand_atcont:
+        transform_train += [RandomAutoContrast()]
     if color_jitter:
         transform_train += [
             T.ColorJitter(brightness=0.2, contrast=0.15, saturation=0, hue=0)
