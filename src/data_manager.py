@@ -27,6 +27,7 @@ class BaseDataManager:
         rand_pers=False,
         rand_affine=False,
         guass_blur=False,
+        rand_atcont=False,
         num_instances=4,  # number of instances per identity (for RandomIdentitySampler)
         **kwargs,
     ):
@@ -46,8 +47,9 @@ class BaseDataManager:
         self.rand_pers = rand_pers
         self.rand_affine = rand_affine
         self.guass_blur = guass_blur
+        self.rand_atcont = rand_atcont
         self.num_instances = num_instances
-
+        
         transform_train, transform_test = build_transforms(
             self.height,
             self.width,
@@ -57,6 +59,7 @@ class BaseDataManager:
             rand_pers=self.rand_pers,
             rand_affine=self.rand_affine,
             guass_blur=self.guass_blur
+            rand_atcont=self.rand_atcont
         )
         self.transform_train = transform_train
         self.transform_test = transform_test
