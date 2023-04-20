@@ -71,17 +71,17 @@ def argument_parser():
     parser.add_argument(
         "--rand-pers",
         action="store_true",
-        help="randomly alter the intensities of RGB channels",
+        help="randomly alter the image perspective",
     )
     parser.add_argument(
         "--gauss-blur",
         action="store_true",
-        help="randomly alter the intensities of RGB channels",
+        help="adding gaussian blur to images",
     )
     parser.add_argument(
         "--rand-affine",
         action="store_true",
-        help="randomly alter the intensities of RGB channels",
+        help="randomly applying affine transforms to images",
     )
     # ************************************************************
     # Optimization options
@@ -292,7 +292,8 @@ def dataset_kwargs(parsed_args):
         "random_erase": parsed_args.random_erase,
         "color_jitter": parsed_args.color_jitter,
         "color_aug": parsed_args.color_aug,
-        #"rand_pers":parsed_args.rand_pers
+        "rand_pers":parsed_args.rand_pers,
+        "rand_affine":parsed_args.rand_affine
     }
 
 
