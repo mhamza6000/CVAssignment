@@ -26,6 +26,7 @@ class BaseDataManager:
         color_aug=False,  # randomly alter the intensities of RGB channels
         rand_pers=False,
         rand_affine=False,
+        guass_blur=False,
         num_instances=4,  # number of instances per identity (for RandomIdentitySampler)
         **kwargs,
     ):
@@ -53,7 +54,8 @@ class BaseDataManager:
             color_jitter=self.color_jitter,
             color_aug=self.color_aug,
             rand_pers=self.rand_pers,
-            rand_affine=self.rand_affine
+            rand_affine=self.rand_affine,
+            guass_blur=self.guass_blur
         )
         self.transform_train = transform_train
         self.transform_test = transform_test
