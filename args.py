@@ -83,6 +83,11 @@ def argument_parser():
         action="store_true",
         help="randomly applying affine transforms to images",
     )
+    parser.add_argument(
+        "--rand-atcont",
+        action="store_true",
+        help="randomly adjust image contrast",
+    )
     # ************************************************************
     # Optimization options
     # ************************************************************
@@ -294,6 +299,8 @@ def dataset_kwargs(parsed_args):
         "color_aug": parsed_args.color_aug,
         "rand_pers":parsed_args.rand_pers,
         "rand_affine":parsed_args.rand_affine
+        "guass_blur":parsed_args.guass_blur
+        "rand_atcont":parsed_args.rand_atcont
     }
 
 
