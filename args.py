@@ -73,11 +73,13 @@ def argument_parser():
         action="store_true",
         help="randomly alter the image perspective",
     )
+    """
     parser.add_argument(
         "--gauss-blur",
         action="store_true",
         help="adding gaussian blur to images",
     )
+    """
     parser.add_argument(
         "--rand-affine",
         action="store_true",
@@ -299,7 +301,7 @@ def dataset_kwargs(parsed_args):
         "color_aug": parsed_args.color_aug,
         "rand_pers":parsed_args.rand_pers,
         "rand_affine":parsed_args.rand_affine,
-        "guass_blur":parsed_args.guass_blur,
+        #"guass_blur":parsed_args.guass_blur,
         "rand_atcont":parsed_args.rand_atcont
     }
 
