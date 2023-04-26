@@ -146,6 +146,13 @@ class RandomAutoContrast:
         autocontraster = T.RandomAutocontrast()
         autocontrasted_imgs = autocontraster(img)
         return autocontrasted_imgs
+
+class RandomCrop:
+    def __call__(self, img):
+        crops = []
+        cropper = T.RandomCrop(size=(224,224))
+        crops = [cropper(img) for _ in range(4)]
+        return crops
     
 def build_transforms(
     height,
