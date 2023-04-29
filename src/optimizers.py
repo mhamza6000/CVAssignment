@@ -80,6 +80,14 @@ def init_optimizer(
             weight_decay=weight_decay,
             alpha=rmsprop_alpha,
         )
+    elif optim == "adamax":
+        return torch.optim.Adamax(
+            param_groups,
+            lr=lr,
+            momentum=momentum,
+            weight_decay=weight_decay,
+            alpha=rmsprop_alpha,
+        )
 
     else:
         raise ValueError(f"Unsupported optimizer: {optim}")
