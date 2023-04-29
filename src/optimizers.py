@@ -84,9 +84,8 @@ def init_optimizer(
         return torch.optim.Adamax(
             param_groups,
             lr=lr,
-            momentum=momentum,
             weight_decay=weight_decay,
-            alpha=rmsprop_alpha,
+            betas=(adam_beta1, adam_beta2),
         )
 
     else:
