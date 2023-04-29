@@ -100,10 +100,23 @@ def argument_parser():
         help="optimization algorithm (see optimizers.py)",
     )
     parser.add_argument(
-        "--lr", default=0.00001, type=float, help="initial learning rate"
+        "--lr", default=0.0001, type=float, help="initial learning rate"
     )
     parser.add_argument(
-        "--weight-decay", default=5e-04, type=float, help="weight decay"
+        "--weight-decay", default=5e-03, type=float, help="weight decay"
+    )
+    # Adamax
+    parser.add_argument(
+        "--optim",
+        type=str,
+        default="adamax",
+        help="optimization algorithm (see optimizers.py)",
+    )
+    parser.add_argument(
+        "--lr", default=0.0001, type=float, help="initial learning rate"
+    )
+    parser.add_argument(
+        "--weight-decay", default=5e-03, type=float, help="weight decay"
     )
     # sgd
     parser.add_argument(
@@ -124,7 +137,7 @@ def argument_parser():
     parser.add_argument(
         "--rmsprop-alpha", default=0.99, type=float, help="rmsprop's smoothing constant"
     )
-    # adam/amsgrad
+    # adam/amsgrad/adamax
     parser.add_argument(
         "--adam-beta1",
         default=0.92,
