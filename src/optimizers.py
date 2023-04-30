@@ -62,7 +62,7 @@ def init_optimizer(
             amsgrad=True,
         )
      elif optim == "adamW":
-        return torch.optim.Adam(
+        return torch.optim.AdamW(
             param_groups,
             lr=lr,
             weight_decay=weight_decay,
