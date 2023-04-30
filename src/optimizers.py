@@ -61,7 +61,7 @@ def init_optimizer(
             betas=(adam_beta1, adam_beta2),
             amsgrad=True,
         )
-     elif optim == "adamW":
+    elif optim == "adamW":
         return torch.optim.AdamW(
             param_groups,
             lr=lr,
