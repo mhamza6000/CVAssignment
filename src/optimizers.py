@@ -7,7 +7,7 @@ import torch.nn as nn
 def init_optimizer(
     model,
     optim="adam",  # optimizer choices
-    lr=0.00001,  # learning rate
+    lr=0.0001,  # learning rate
     weight_decay=5e-4,  # weight decay
     momentum=0.9,  # momentum factor for sgd and rmsprop
     sgd_dampening=0,  # sgd's dampening for momentum
@@ -18,6 +18,7 @@ def init_optimizer(
     staged_lr=False,  # different lr for different layers
     new_layers=None,  # new layers use the default lr, while other layers's lr is scaled by base_lr_mult
     base_lr_mult=0.1,  # learning rate multiplier for base layers
+    epsilon=1e-07
 ):
     if staged_lr:
         assert new_layers is not None
