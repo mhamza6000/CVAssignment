@@ -119,7 +119,7 @@ def argument_parser():
         "--weight-decay", default=5e-03, type=float, help="weight decay"
     )
     parser.add_argument(
-        "--epsilon", default=1e-07, type=float, help="weight decay"
+        "--epsilon", default=1e-07, type=float, help="epsilon"
     )
    
     # sgd
