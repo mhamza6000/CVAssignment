@@ -105,21 +105,7 @@ def argument_parser():
     parser.add_argument(
         "--weight-decay", default=5e-03, type=float, help="weight decay"
     )
-    #AdamW
-    parser.add_argument(
-        "--optim",
-        type=str,
-        default="adamW",
-        help="optimization algorithm (see optimizers.py)",
-    )
-    parser.add_argument(
-        "--lr", default=0.0001, type=float, help="initial learning rate"
-    )
-    parser.add_argument(
-        "--weight-decay", default=5e-03, type=float, help="weight decay"
-    )
-   
-    # sgd
+     # sgd
     parser.add_argument(
         "--momentum",
         default=0.9,
