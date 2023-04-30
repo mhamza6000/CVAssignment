@@ -105,6 +105,22 @@ def argument_parser():
     parser.add_argument(
         "--weight-decay", default=5e-03, type=float, help="weight decay"
     )
+    #AdamW
+    parser.add_argument(
+        "--optim",
+        type=str,
+        default="adamW",
+        help="optimization algorithm (see optimizers.py)",
+    )
+    parser.add_argument(
+        "--lr", default=0.0001, type=float, help="initial learning rate"
+    )
+    parser.add_argument(
+        "--weight-decay", default=5e-03, type=float, help="weight decay"
+    )
+    parser.add_argument(
+        "--epsilon", default=1e-07, type=float, help="weight decay"
+    )
    
     # sgd
     parser.add_argument(
@@ -322,6 +338,7 @@ def optimizer_kwargs(parsed_args):
         "rmsprop_alpha": parsed_args.rmsprop_alpha,
         "adam_beta1": parsed_args.adam_beta1,
         "adam_beta2": parsed_args.adam_beta2,
+        "epsilon":parsed_args.epsilon
     }
 
 
