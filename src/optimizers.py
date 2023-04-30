@@ -61,7 +61,15 @@ def init_optimizer(
             betas=(adam_beta1, adam_beta2),
             amsgrad=True,
         )
-
+     elif optim == "adamW":
+        return torch.optim.Adam(
+            param_groups,
+            lr=lr,
+            weight_decay=weight_decay,
+            betas=(adam_beta1, adam_beta2),
+            epsilon=1e-07,
+            amsgrad=False,
+        )
     elif optim == "sgd":
         return torch.optim.SGD(
             param_groups,
