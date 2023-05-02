@@ -61,7 +61,8 @@ def init_optimizer(
             betas=(adam_beta1, adam_beta2),
             amsgrad=True,
         )
-       elif optim == "sgd":
+    
+    elif optim == "sgd":
         return torch.optim.SGD(
             param_groups,
             lr=lr,
@@ -69,7 +70,7 @@ def init_optimizer(
             weight_decay=weight_decay,
             dampening=sgd_dampening,
             nesterov=sgd_nesterov,
-        )
+        ) 
 
     elif optim == "rmsprop":
         return torch.optim.RMSprop(
