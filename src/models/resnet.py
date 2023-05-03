@@ -39,8 +39,11 @@ class BasicBlock(nn.Module):
         self.conv1 = conv3x3(inplanes, planes, stride)
         self.bn1 = nn.BatchNorm2d(planes)
         self.relu = nn.ReLU(inplace=True)
-        self.conv2 = conv3x3(planes, planes)
+        self.conv2 = conv3x3(inplanes, planes, stride)
         self.bn2 = nn.BatchNorm2d(planes)
+        self.relu = nn.ReLU(inplace=True)
+        self.conv3 = conv3x3(planes, planes)
+        self.bn3 = nn.BatchNorm2d(planes)
         self.downsample = downsample
         self.stride = stride
 
@@ -50,9 +53,13 @@ class BasicBlock(nn.Module):
         out = self.conv1(x)
         out = self.bn1(out)
         out = self.relu(out)
-
+        
         out = self.conv2(out)
         out = self.bn2(out)
+        out = self.relu(out)
+        
+        out = self.conv3(out)
+        out = self.bn3(out)
 
         if self.downsample is not None:
             residual = self.downsample(x)
@@ -275,7 +282,7 @@ def resnet18(num_classes, loss={"xent"}, pretrained=True, **kwargs):
         num_classes=num_classes,
         loss=loss,
         block=BasicBlock,
-        layers=[2, 2, 2, 2],
+        layers=[2, 2, 2, 2, 2],
         last_stride=2,
         fc_dims=None,
         dropout_p=None,
