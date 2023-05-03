@@ -4,7 +4,7 @@ import torch.nn as nn
 import torchvision.models as tvmodels
 
 
-__all__ = ["mobilenet_v3_small", "vgg16"]
+__all__ = ["mobilenet_v3_small", "vgg16","efficientnet_b3"]
 
 
 class TorchVisionModel(nn.Module):
