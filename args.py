@@ -127,7 +127,7 @@ def argument_parser():
     # adam/amsgrad/adamax
     parser.add_argument(
         "--adam-beta1",
-        default=0.92,
+        default=0.99,
         type=float,
         help="exponential decay rate for adam's first moment",
     )
@@ -301,7 +301,7 @@ def dataset_kwargs(parsed_args):
         "color_aug": parsed_args.color_aug,
         "rand_pers":parsed_args.rand_pers,
         "rand_affine":parsed_args.rand_affine,
-        #"guass_blur":parsed_args.guass_blur,
+        "guass_blur":parsed_args.guass_blur,
         "rand_atcont":parsed_args.rand_atcont
     }
 
