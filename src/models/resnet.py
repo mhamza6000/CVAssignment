@@ -121,20 +121,20 @@ class ResNet(nn.Module):
         dropout_p=None,
         **kwargs,
     ):
-        self.inplanes = 64
+        self.inplanes = 32
         super().__init__()
         self.loss = loss
         self.feature_dim = 512 * block.expansion
 
         # backbone network
-        self.conv1 = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False)
-        self.bn1 = nn.BatchNorm2d(64)
+        self.conv1 = nn.Conv2d(3, 32, kernel_size=7, stride=2, padding=3, bias=False)
+        self.bn1 = nn.BatchNorm2d(32)
         self.relu1 = nn.ReLU(inplace=True)
-        self.conv2 = nn.Conv2d(64, 128, kernel_size=7, stride=2, padding=3, bias=False)
-        self.bn2 = nn.BatchNorm2d(128)
+        self.conv2 = nn.Conv2d(32, 64, kernel_size=7, stride=2, padding=3, bias=False)
+        self.bn2 = nn.BatchNorm2d(64)
         self.relu2 = nn.ReLU(inplace=True)
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
-        self.layer1 = self._make_layer(block, 128, layers[0])
+        self.layer1 = self._make_layer(block, 64, layers[0])
         self.layer2 = self._make_layer(block, 128, layers[1], stride=2)
         self.layer3 = self._make_layer(block, 256, layers[2], stride=2)
         self.layer4 = self._make_layer(block, 512, layers[3], stride=last_stride)
