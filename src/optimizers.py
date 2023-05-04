@@ -13,7 +13,7 @@ def init_optimizer(
     sgd_dampening=0,  # sgd's dampening for momentum
     sgd_nesterov=False,  # whether to enable sgd's Nesterov momentum
     rmsprop_alpha=0.99,  # rmsprop's smoothing constant
-    adam_beta1=0.95,  # exponential decay rate for adam's first moment
+    adam_beta1=0.99,  # exponential decay rate for adam's first moment
     adam_beta2=0.999,  # # exponential decay rate for adam's second moment
     staged_lr=False,  # different lr for different layers
     new_layers=None,  # new layers use the default lr, while other layers's lr is scaled by base_lr_mult
@@ -47,6 +47,13 @@ def init_optimizer(
     # Construct optimizer
     if optim == "adam":
         return torch.optim.Adam(
+            param_groups,
+            lr=lr,
+            weight_decay=weight_decay,
+            betas=(adam_beta1, adam_beta2),
+        )
+    elif if optim == "adamW":
+        return torch.optim.AdamW(
             param_groups,
             lr=lr,
             weight_decay=weight_decay,
