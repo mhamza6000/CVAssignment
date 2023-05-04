@@ -121,15 +121,18 @@ class ResNet(nn.Module):
         dropout_p=None,
         **kwargs,
     ):
-        self.inplanes = 128
+        self.inplanes = 64
         super().__init__()
         self.loss = loss
         self.feature_dim = 512 * block.expansion
 
         # backbone network
-        self.conv1 = nn.Conv2d(3, 128, kernel_size=7, stride=2, padding=3, bias=False)
-        self.bn1 = nn.BatchNorm2d(128)
-        self.relu = nn.ReLU(inplace=True)
+        self.conv1 = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False)
+        self.bn1 = nn.BatchNorm2d(64)
+        self.relu1 = nn.ReLU(inplace=True)
+        self.conv2 = nn.Conv2d(64, 128, kernel_size=7, stride=2, padding=3, bias=False)
+        self.bn2 = nn.BatchNorm2d(128)
+        self.relu2 = nn.ReLU(inplace=True)
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
         self.layer1 = self._make_layer(block, 128, layers[0])
         self.layer2 = self._make_layer(block, 128, layers[1], stride=2)
@@ -213,7 +216,10 @@ class ResNet(nn.Module):
     def featuremaps(self, x):
         x = self.conv1(x)
         x = self.bn1(x)
-        x = self.relu(x)
+        x = self.relu1(x)
+        x = self.conv2(x)
+        x = self.bn2(x)
+        x = self.relu2(x)
         x = self.maxpool(x)
         x = self.layer1(x)
         x = self.layer2(x)
