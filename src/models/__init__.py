@@ -9,7 +9,6 @@ from .resnet import (
     resnet50_fc512,
 )
 from .tvmodels import mobilenet_v3_small, vgg16
-from .siamese_network import SiameseNetwork
 
 
 __model_factory = {
@@ -22,7 +21,6 @@ __model_factory = {
     "resnet50_fc512": resnet50_fc512,
     "mobilenet_v3_small": mobilenet_v3_small,
     "vgg16": vgg16,
-    "siamese_network":SiameseNetwork
 }
 
 
