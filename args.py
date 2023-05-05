@@ -299,7 +299,7 @@ def dataset_kwargs(parsed_args):
         "color_aug": parsed_args.color_aug,
         "rand_pers":parsed_args.rand_pers,
         "rand_affine":parsed_args.rand_affine,
-        "guass_blur":parsed_args.guass_blur,
+        "gauss_blur":parsed_args.gauss_blur,
         "rand_atcont":parsed_args.rand_atcont
     }
 
