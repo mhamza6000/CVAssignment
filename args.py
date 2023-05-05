@@ -73,13 +73,11 @@ def argument_parser():
         action="store_true",
         help="randomly alter the image perspective",
     )
-    """
     parser.add_argument(
         "--gauss-blur",
         action="store_true",
         help="adding gaussian blur to images",
     )
-    """
     parser.add_argument(
         "--rand-affine",
         action="store_true",
