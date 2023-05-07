@@ -124,7 +124,7 @@ class ResNet(nn.Module):
         dropout_p=None,
         **kwargs,
     ):
-        self.inplanes = 128
+        self.inplanes = 64
         super().__init__()
         self.loss = loss
         self.feature_dim = 512 * block.expansion
