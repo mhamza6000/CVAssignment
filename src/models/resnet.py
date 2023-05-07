@@ -130,8 +130,8 @@ class ResNet(nn.Module):
         self.feature_dim = 512 * block.expansion
 
         # backbone network
-        self.conv1 = nn.Conv2d(3, 128, kernel_size=7, stride=2, padding=3, bias=False)
-        self.bn1 = nn.BatchNorm2d(128)
+        self.conv1 = nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False)
+        self.bn1 = nn.BatchNorm2d(64)
         self.relu = nn.ReLU(inplace=True)
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
         self.layer1 = self._make_layer(block, 128, layers[0])
@@ -265,7 +265,7 @@ def init_pretrained_weights(model, model_url):
 """
 Residual network configurations:
 --
-resnet18: block=BasicBlock, layers=[2, 2, 2, 2]
+resnet18: block=BasicBlock, layers=[3, 3, 3, 3]
 resnet34: block=BasicBlock, layers=[3, 4, 6, 3]
 resnet50: block=Bottleneck, layers=[3, 4, 6, 3]
 resnet101: block=Bottleneck, layers=[3, 4, 23, 3]
