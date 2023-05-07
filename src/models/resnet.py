@@ -134,7 +134,7 @@ class ResNet(nn.Module):
         self.bn1 = nn.BatchNorm2d(64)
         self.relu = nn.ReLU(inplace=True)
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
-        self.layer1 = self._make_layer(block, 128, layers[0])
+        self.layer1 = self._make_layer(block, 64, layers[0])
         self.layer2 = self._make_layer(block, 128, layers[1], stride=2)
         self.layer3 = self._make_layer(block, 256, layers[2], stride=2)
         self.layer4 = self._make_layer(block, 512, layers[3], stride=last_stride)
@@ -278,7 +278,7 @@ def resnet18(num_classes, loss={"xent"}, pretrained=True, **kwargs):
         num_classes=num_classes,
         loss=loss,
         block=BasicBlock,
-        layers=[2, 2, 2, 2],
+        layers=[2, 1, 2, 2],
         last_stride=2,
         fc_dims=None,
         dropout_p=None,
