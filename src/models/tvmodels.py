@@ -59,8 +59,3 @@ def mobilenet_v3_small(num_classes, loss={"xent"}, pretrained=True, **kwargs):
 
 # Define any models supported by torchvision bellow
 # https://pytorch.org/vision/0.11/models.html
-def efficientnet_v2_s(num_classes, loss={"xent"}, pretrained=True, **kwargs):
-   
-    model = models.efficientnet_b4(pretrained=True)
-
-    return model
