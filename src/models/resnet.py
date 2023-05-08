@@ -278,7 +278,7 @@ def resnet18(num_classes, loss={"xent"}, pretrained=True, **kwargs):
         num_classes=num_classes,
         loss=loss,
         block=BasicBlock,
-        layers=[3, 2, 2, 2],
+        layers=[3, 3, 2, 2],
         last_stride=2,
         fc_dims=None,
         dropout_p=None,
