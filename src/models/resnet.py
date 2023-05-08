@@ -136,11 +136,11 @@ class ResNet(nn.Module):
         self.maxpool = nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
         self.layer1 = self._make_layer(block, 64, layers[0])
         self.layer2 = self._make_layer(block, 128, layers[1], stride=2)
-        self.layer3 = self._make_layer(block, 256, layers[2], stride=2)
-        self.layer4 = self._make_layer(block, 512, layers[3], stride=last_stride)
+        self.layer3 = self._make_layer(block, 128, layers[2], stride=2)
+        self.layer4 = self._make_layer(block, 256, layers[3], stride=last_stride)
 
         self.global_avgpool = nn.AdaptiveAvgPool2d(1)
-        self.fc = self._construct_fc_layer(fc_dims, 512 * block.expansion, dropout_p)
+        self.fc = self._construct_fc_layer(fc_dims, 256 * block.expansion, dropout_p)
         self.classifier = nn.Linear(self.feature_dim, num_classes)
 
         self._init_params()
@@ -278,7 +278,7 @@ def resnet18(num_classes, loss={"xent"}, pretrained=True, **kwargs):
         num_classes=num_classes,
         loss=loss,
         block=BasicBlock,
-        layers=[1, 1, 1, 2],
+        layers=[2, 2, 2, 2],
         last_stride=2,
         fc_dims=None,
         dropout_p=None,
