@@ -63,5 +63,4 @@ def efficientnet_v2_s(num_classes, loss={"xent"}, pretrained=True, **kwargs):
    
     model = models.efficientnet_b4(pretrained=True)
 
-    )
     return model
